@@ -1,1 +1,119 @@
+---INSERTAR---
+
+
+CREATE PROCEDURE usp_Medico_insert
+(
+@Id int,
+@Nombre varchar(20),
+@Apellido varvhar(50),
+@Telefono varchar(11),
+@Especialidad varchar(50),
+@precio decima(10,0),
+@FechaAtencion date
+)
+AS
+BEGIN
+INSERT INTO Medico(Id,Nombre,Apellido,Telefono,Especialidad,precio,FechaAtencion)
+VALUES(@iD,@Nombre,@Apellido,@Telefono,@Especialidad,@precio,@FechaAtencion)
+END
+EXEC usp_Medico_insert '156','Pedro','Morales Vivas','956248576','Medico General','150','2020-06-08'
+
+
+
+
+
+
+---------MODIFICAR---------
+CREATE PROCEDURE ModificarMedico
+@Id int,
+@Nombre varchar(20),
+@Apellido varvhar(50),
+@Telefono varchar(11),
+@Especialidad varchar(50),
+@precio decima(10,0),
+@FechaAtencion date
+AS
+BEGIN
+UPDATE Medico SET Nombre=@Nombre, Apellido=@Apellido, Especialidad=@Especialidad
+WHERE Id=@Id
+END
+GO
+
+EXEC ModificarMedico '156',Camilo,Porras Ugarte, Otorrino
+
+
+
+
+
+
+
+------AGREGAR--------
+
+
+create proceso Especialidades
+(
+@id int,
+@nombre varchar(20),
+@descripcion varchar(50),
+@imagen varchar(200)
+)
+
+AS
+BEGIN
+insert into Especialidades (id,nombre,descripcion,imagen)
+values (@id,@nombre,@descripcion,@imagen)
+END
+EXEC Especialidades '199','Psicologia','Psicologia'
+
+
+
+
+
+
+
+------modificar-------
+
+
+create proceso modificarEspecialidades
+@id int,
+@nombre varchar(20),
+@descripcion varchar(50),
+@imagen varchar(200)
+as
+begin
+update Especialidades SET nombre=@nombre, descripcion=@descripcion, 
+where id=@id
+end
+go
+
+exec modificadoEspecialidad '199','Medicina General','Medicina'
+
+
+
+
+
+
+
+
+
+
+
+
+
+------Proceso Alamcenado consutar--------
+
+SELECT *FROM Especialidades;
+
+SELECT *FROM Medico;
+
+SELECT *FROM Cliente;
+
+
+
+
+
+
+
+
+
 
